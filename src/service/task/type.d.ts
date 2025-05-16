@@ -1,9 +1,10 @@
-export type TPriority = 'MEDIUM' | 'HIGH' | 'LOW'
+export type TPriority = 'MEDIUM' | 'HIGH' | 'LOW' | 'ALL'
 export type TCategory = 'GENERAL' | 'DEVELOPMENT' | 'DESIGN' | 'WORK' | 'SEARCH'
+export type TViewMode = 'list' | 'grid' | 'kanban'
 
 export type TCreateTaskRequest = {
   title: string
-  priotity: TPriority
+  priority: TPriority
   category: TCategory
 }
 
@@ -41,3 +42,5 @@ export type TUpdateTaskResponse = {
   message: string
   data: TTask
 }
+
+

@@ -10,7 +10,7 @@ import {
 const TaskService = {
   create: async (data: TCreateTaskRequest): Promise<TCreateTaskResponse> =>
     (await api.post('/task', data)).data,
-  get: async (): Promise<TGetTaskResponse> => (await api.get('/task')).data,
+  get: async (params?: string): Promise<TGetTaskResponse> => (await api.get(`/task${params}`)).data,
   update: async (data: TUpdateTaskRequest): Promise<TUpdateTaskResponse> =>
     (await api.patch('/task', data)).data,
   delete: async (id: number): Promise<void> => (await api.delete(`/task/${id}`)).data,

@@ -27,9 +27,9 @@ export function ViewModeToggle({
   const getToggleItemClassNames = (itemValue: string) => {
     return cn(
       // Classes base para todos os itens
-      'data-[state=on]:bg-primary data-[state=on]:text-primary-foreground',
+      'data-[state=on]:bg-primary data-[state=on]:text-primary-foreground cursor-pointer',
       // Removendo qualquer possível cor de fundo padrão quando selecionado
-      'data-[state=on]:hover:bg-primary/90'
+      'data-[state=on]:hover:bg-primary/90 cursor-pointer'
     )
   }
 

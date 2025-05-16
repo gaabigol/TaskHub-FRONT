@@ -1,5 +1,6 @@
-export type TUnit = 'UN' | 'KG ' | 'G' | 'L' | 'ML' | 'PCT' | 'CX'
-export type TShippingCategory =
+export type TUnit = 'UN' | 'KG' | 'G' | 'L' | 'ML' | 'PCT' | 'CX'
+export type TShoppingCategory =
+  | 'ALL'
   | 'GENERAL'
   | 'GROCERY'
   | 'FRUITS'
@@ -27,7 +28,7 @@ export type TCreateShoppingItemRequest = {
   name: string
   quantity: number
   unit: TUnit
-  category: TShippingCategory
+  category: TShoppingCategory
 }
 
 export type TCreateShoppingItemResponse = {
@@ -46,7 +47,7 @@ export type TUpdateShoppingItemRequest = {
   name?: string
   quantity?: number
   unit?: TUnit
-  category?: TShippingCategory
+  category?: TShoppingCategory
   purchased?: boolean
 }
 

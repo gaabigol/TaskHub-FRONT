@@ -32,11 +32,11 @@ export function dateNow():string {
 
 export function getPriorityColor(priority: string): string {
   switch (priority) {
-    case 'high':
+    case 'HIGH':
       return 'text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/20'
-    case 'medium':
+    case 'MEDIUM':
       return 'text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/20'
-    case 'low':
+    case 'LOW':
       return 'text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/20'
     default:
       return 'text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-900/20'
@@ -45,11 +45,11 @@ export function getPriorityColor(priority: string): string {
 
 export function getPriorityLabel(priority: string): string {
   switch (priority) {
-    case 'high':
+    case 'HIGH':
       return 'Alta'
-    case 'medium':
+    case 'MEDIUM':
       return 'Média'
-    case 'low':
+    case 'LOW':
       return 'Baixa'
     default:
       return 'Normal'

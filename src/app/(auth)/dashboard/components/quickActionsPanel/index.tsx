@@ -11,7 +11,7 @@ export default function QuickActionsPanel() {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 gap-3">
-          <Link href="/tasks">
+          <Link href="/task">
             <Button
               variant="outline"
               size="lg"
@@ -33,7 +33,7 @@ export default function QuickActionsPanel() {
             </Button>
           </Link>
 
-          <Link href="/notes">
+          <Link href="/note">
             <Button
               variant="outline"
               size="lg"
