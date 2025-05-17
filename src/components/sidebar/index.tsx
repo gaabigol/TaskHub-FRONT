@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { signOut } from 'next-auth/react'
 import {
   LayoutDashboard,
   CheckSquare,
@@ -12,6 +13,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useSession } from 'next-auth/react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -39,6 +41,7 @@ export default function Sidebar({
   isOpen: boolean
   setIsOpen: (isOpen: boolean) => void
 }) {
+  const { data } = useSession()
   const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
 
@@ -151,16 +154,18 @@ export default function Sidebar({
             )
           })}
         </nav>
-
-        {/* User Profile Section */}
         <div className="flex items-center px-4 py-3 border-t border-border">
-          <AvatarName name={'MG'} initials={'MG'} size="sm" />
+          <AvatarName
+            name={data?.user.avatarInitials || ''}
+            initials={data?.user.avatarInitials || ''}
+            size="sm"
+          />
           <div className="ml-3 flex-1 min-w-0">
             <p className="text-sm font-medium text-foreground dark:text-white truncate">
-              {'Miguel Bernardo'}
+              {data?.user.displayName}
             </p>
             <p className="text-xs text-foreground/70 dark:text-foreground/70 truncate">
-              {'nome usuário'}
+              {`@${data?.user.username}`}
             </p>
           </div>
           <div className="flex items-center space-x-2">
@@ -183,8 +188,10 @@ export default function Sidebar({
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="cursor-pointer">
-                  <LogOut className="h-4 w-4 mr-2 cursor-pointer" />
-                  Sair
+                  <Button variant={'ghost'} size={'icon'} onClick={() => signOut()}>
+                    <LogOut className="h-4 w-4 mr-2 cursor-pointer" />
+                    Sair
+                  </Button>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
