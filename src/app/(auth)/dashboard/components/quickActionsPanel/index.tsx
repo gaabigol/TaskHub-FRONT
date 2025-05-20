@@ -43,15 +43,16 @@ export default function QuickActionsPanel() {
               <span>Nova Nota</span>
             </Button>
           </Link>
-
-          <Button
-            variant="outline"
-            size="lg"
-            className="h-auto py-4 w-full flex flex-col items-center justify-center cursor-pointer"
-          >
-            <Settings className="h-5 w-5 text-primary mb-2" />
-            <span>Configurações</span>
-          </Button>
+          <Link href="/profile" className="cursor-pointer">
+            <Button
+              variant="outline"
+              size="lg"
+              className="h-auto py-4 w-full flex flex-col items-center justify-center cursor-pointer"
+            >
+              <Settings className="h-5 w-5 text-primary mb-2" />
+              <span>Configurações</span>
+            </Button>
+          </Link>
         </div>
       </CardContent>
     </Card>

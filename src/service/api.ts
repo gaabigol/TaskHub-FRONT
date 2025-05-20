@@ -2,7 +2,7 @@ import axios from 'axios'
 import { getSession, signOut } from 'next-auth/react'
 import { toast } from 'sonner'
 export const api = axios.create({
-  baseURL: 'http://localhost:3000/v1',
+  baseURL: 'https://task-hub-api.vercel.app/v1',
   headers: {
     'Content-Type': 'application/json'
   },

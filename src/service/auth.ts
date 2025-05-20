@@ -11,7 +11,7 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials) {
-        const res = await fetch('http://localhost:3000/v1/auth', {
+        const res = await fetch('https://task-hub-api.vercel.app/v1/auth', {
           method: 'POST',
           body: JSON.stringify({
             email: credentials?.email,
