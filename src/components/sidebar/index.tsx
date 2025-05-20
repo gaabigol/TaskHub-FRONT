@@ -28,7 +28,7 @@ import { usePathname } from 'next/navigation'
 import { Fragment, useEffect, useState } from 'react'
 
 const navigationItems = [
-  { name: 'Dashboard', href: '/', icon: LayoutDashboard },
+  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Tarefas', href: '/task', icon: CheckSquare },
   { name: 'Lista de Compras', href: '/shopping', icon: ShoppingCart },
   { name: 'Notas', href: '/note', icon: StickyNote }
@@ -187,11 +187,12 @@ export default function Sidebar({
                     Perfil
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <Button variant={'ghost'} size={'icon'} onClick={() => signOut()}>
-                    <LogOut className="h-4 w-4 mr-2 cursor-pointer" />
-                    Sair
-                  </Button>
+                <DropdownMenuItem
+                  className="cursor-pointer flex items-center"
+                  onClick={() => signOut({ callbackUrl: '/' })}
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sair
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

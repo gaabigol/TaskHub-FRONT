@@ -15,14 +15,22 @@ export default function SelectPriority({
 }) {
   return (
     <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className="w-full md:w-[200px]">
-        <SelectValue placeholder="Todas as prioridades" />
+      <SelectTrigger className="w-full md:w-[200px] cursor-pointer">
+        <SelectValue className="cursor-pointer" placeholder="Todas as prioridades" />
       </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="ALL">Todas as prioridades</SelectItem>
-        <SelectItem value="HIGH">Alta prioridade</SelectItem>
-        <SelectItem value="MEDIUM">Média prioridade</SelectItem>
-        <SelectItem value="LOW">Baixa prioridade</SelectItem>
+      <SelectContent className="cursor-pointer">
+        <SelectItem className="cursor-pointer" value="ALL">
+          Todas as prioridades
+        </SelectItem>
+        <SelectItem className="cursor-pointer" value="HIGH">
+          Alta prioridade
+        </SelectItem>
+        <SelectItem className="cursor-pointer" value="MEDIUM">
+          Média prioridade
+        </SelectItem>
+        <SelectItem className="cursor-pointer" value="LOW">
+          Baixa prioridade
+        </SelectItem>
       </SelectContent>
     </Select>
   )

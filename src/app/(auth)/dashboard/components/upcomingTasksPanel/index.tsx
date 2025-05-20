@@ -11,7 +11,7 @@ export default function UpcomingTasksPanel() {
     isFetched
   } = useQuery({
     queryKey: ['tasks'],
-    queryFn: TaskService.get
+    queryFn: async () => TaskService.get('')
   })
 
   if (isLoading) {
@@ -34,7 +34,7 @@ export default function UpcomingTasksPanel() {
 
   return (
     <ul className="space-y-3">
-      {tasks?.data.slice(0,5).map((task: TTask) => (
+      {tasks?.data.slice(0, 5).map((task: TTask) => (
         <CDashboard.upcomingTaskItem
           key={task.id}
           id={task.id}

@@ -80,16 +80,26 @@ export default function NewTask() {
                   <FormItem>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
-                        <SelectTrigger className="h-10 w-[150px]">
+                        <SelectTrigger className="h-10 w-[150px] cursor-pointer">
                           <SelectValue placeholder="Categoria" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="GENERAL">Geral</SelectItem>
-                        <SelectItem value="DEVELOPMENT">Desenvolvimento</SelectItem>
-                        <SelectItem value="DESIGN">Design</SelectItem>
-                        <SelectItem value="SEARCH">Pesquisa</SelectItem>
-                        <SelectItem value="WORK">Trabalho</SelectItem>
+                        <SelectItem className="cursor-pointer" value="GENERAL">
+                          Geral
+                        </SelectItem>
+                        <SelectItem className="cursor-pointer" value="DEVELOPMENT">
+                          Desenvolvimento
+                        </SelectItem>
+                        <SelectItem className="cursor-pointer" value="DESIGN">
+                          Design
+                        </SelectItem>
+                        <SelectItem className="cursor-pointer" value="SEARCH">
+                          Pesquisa
+                        </SelectItem>
+                        <SelectItem className="cursor-pointer" value="WORK">
+                          Trabalho
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </FormItem>
@@ -103,21 +113,27 @@ export default function NewTask() {
                   <FormItem>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
-                        <SelectTrigger className="h-10 w-[120px]">
+                        <SelectTrigger className="h-10 w-[120px] cursor-pointer">
                           <SelectValue placeholder="Prioridade" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="MEDIUM">Média</SelectItem>
-                        <SelectItem value="HIGH">Alta</SelectItem>
-                        <SelectItem value="LOW">Baixa</SelectItem>
+                        <SelectItem className="cursor-pointer" value="MEDIUM">
+                          Média
+                        </SelectItem>
+                        <SelectItem className="cursor-pointer" value="HIGH">
+                          Alta
+                        </SelectItem>
+                        <SelectItem className="cursor-pointer" value="LOW">
+                          Baixa
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </FormItem>
                 )}
               />
 
-              <Button type="submit" className="h-10">
+              <Button type="submit" className="h-10 text-white cursor-pointer">
                 <Plus className="mr-1 h-4 w-4" />
                 Adicionar
               </Button>

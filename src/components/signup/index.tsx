@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form'
 import { handleDisplayNameChange, registerSchema, TRegisterUser } from './common'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
-
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import { dateNow } from '@/common/util'
@@ -12,9 +11,15 @@ import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { Loader2 } from 'lucide-react'
 
-export default function SignUp() {
+export default function SignUp({ onSuccess }: { onSuccess: (tab: string) => void }) {
   const form = useForm<TRegisterUser>({
-    resolver: zodResolver(registerSchema)
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      username: '',
+      displayName: '',
+      password: '',
+      email: ''
+    }
   })
 
   const { mutateAsync: handleRegisterUserFn, isPending } = useMutation({
@@ -28,7 +33,7 @@ export default function SignUp() {
       })
 
       if (!response.ok) {
-        throw new Error('Erro ao registrar usuário')
+        return Promise.reject(response.json())
       }
 
       return response.json()
@@ -37,10 +42,16 @@ export default function SignUp() {
       toast('Usuário registrado com sucesso', {
         description: dateNow()
       })
-      form.reset()
+      form.reset({
+        username: '',
+        displayName: '',
+        password: '',
+        email: ''
+      })
+      onSuccess('login')
     },
     onError: (error) => {
-      toast(String(error), {
+      toast(String(error.message), {
         description: dateNow()
       })
     }
@@ -61,6 +72,20 @@ export default function SignUp() {
               <FormLabel>Nome de usuário</FormLabel>
               <FormControl>
                 <Input placeholder="seu-usuario" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

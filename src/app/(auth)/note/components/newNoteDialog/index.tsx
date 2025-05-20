@@ -74,13 +74,13 @@ export default function NewNoteDialog() {
 
   return (
     <>
-      <Button onClick={() => setShowNewNoteDialog(true)} className="cursor-pointer">
+      <Button onClick={() => setShowNewNoteDialog(true)} className="cursor-pointer text-white">
         <Plus className="h-4 w-4 mr-2" />
         Nova Nota
       </Button>
 
       <Dialog open={showNewNoteDialog} onOpenChange={setShowNewNoteDialog}>
-        <DialogContent className="sm:max-w-[550px]">
+        <DialogContent className="sm:max-w-[550px] dark:bg-sidebar">
           <DialogHeader>
             <DialogTitle>Nova Nota</DialogTitle>
           </DialogHeader>
@@ -128,36 +128,36 @@ export default function NewNoteDialog() {
                     <FormLabel>Cor</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
-                        <SelectTrigger>
+                        <SelectTrigger className="cursor-pointer">
                           <SelectValue placeholder="Selecionar cor" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="BLUE">
+                        <SelectItem className="cursor-pointer" value="BLUE">
                           <div className="flex items-center">
                             <div className="w-4 h-4 rounded-full bg-blue-500 mr-2"></div>
                             Azul
                           </div>
                         </SelectItem>
-                        <SelectItem value="GREEN">
+                        <SelectItem className="cursor-pointer" value="GREEN">
                           <div className="flex items-center">
                             <div className="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
                             Verde
                           </div>
                         </SelectItem>
-                        <SelectItem value="PURPLE">
+                        <SelectItem className="cursor-pointer" value="PURPLE">
                           <div className="flex items-center">
                             <div className="w-4 h-4 rounded-full bg-purple-500 mr-2"></div>
                             Roxo
                           </div>
                         </SelectItem>
-                        <SelectItem value="YELLOW">
+                        <SelectItem className="cursor-pointer" value="YELLOW">
                           <div className="flex items-center">
                             <div className="w-4 h-4 rounded-full bg-yellow-500 mr-2"></div>
                             Amarelo
                           </div>
                         </SelectItem>
-                        <SelectItem value="RED">
+                        <SelectItem className="cursor-pointer" value="RED">
                           <div className="flex items-center">
                             <div className="w-4 h-4 rounded-full bg-red-500 mr-2"></div>
                             Vermelho
@@ -179,7 +179,7 @@ export default function NewNoteDialog() {
                 >
                   Cancelar
                 </Button>
-                <Button className="cursor-pointer" type="submit">
+                <Button className="cursor-pointer text-white" type="submit">
                   Salvar Nota
                 </Button>
               </DialogFooter>

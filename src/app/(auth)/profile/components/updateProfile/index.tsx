@@ -145,7 +145,7 @@ export default function UpdateProfile() {
               )}
             />
 
-            <Button type="submit" className="w-full mt-4" disabled={isPending}>
+            <Button type="submit" className="w-full mt-4 text-white cursor-pointer" disabled={isPending}>
               {isPending ? 'Salvando...' : 'Salvar alterações'}
             </Button>
           </form>

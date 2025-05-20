@@ -76,8 +76,8 @@ export default function UpdateTask({ data: task }: { data: TTask }) {
         <Pencil className="h-4 w-4" />
         <span className="sr-only">Editar</span>
       </Button>
-      <Dialog open={showDialog} onOpenChange={setShowDialog}>
-        <DialogContent className="sm:max-w-[550px] p-6">
+      <Dialog open={showDialog} onOpenChange={setShowDialog} >
+        <DialogContent className="sm:max-w-[550px] p-6 dark:bg-sidebar">
           <DialogHeader className="mb-4">
             <DialogTitle className="text-xl font-semibold">Editar Tarefa</DialogTitle>
           </DialogHeader>
@@ -108,16 +108,26 @@ export default function UpdateTask({ data: task }: { data: TTask }) {
                     <FormItem>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="h-10 w-full">
+                          <SelectTrigger className="h-10 w-full cursor-pointer">
                             <SelectValue placeholder="Categoria" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="GENERAL">Geral</SelectItem>
-                          <SelectItem value="DEVELOPMENT">Desenvolvimento</SelectItem>
-                          <SelectItem value="DESIGN">Design</SelectItem>
-                          <SelectItem value="SEARCH">Pesquisa</SelectItem>
-                          <SelectItem value="WORK">Trabalho</SelectItem>
+                          <SelectItem className="cursor-pointer" value="GENERAL">
+                            Geral
+                          </SelectItem>
+                          <SelectItem className="cursor-pointer" value="DEVELOPMENT">
+                            Desenvolvimento
+                          </SelectItem>
+                          <SelectItem className="cursor-pointer" value="DESIGN">
+                            Design
+                          </SelectItem>
+                          <SelectItem className="cursor-pointer" value="SEARCH">
+                            Pesquisa
+                          </SelectItem>
+                          <SelectItem className="cursor-pointer" value="WORK">
+                            Trabalho
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </FormItem>
@@ -130,14 +140,20 @@ export default function UpdateTask({ data: task }: { data: TTask }) {
                     <FormItem>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="h-10 w-full">
+                          <SelectTrigger className="h-10 w-full cursor-pointer">
                             <SelectValue placeholder="Prioridade" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="MEDIUM">Média</SelectItem>
-                          <SelectItem value="HIGH">Alta</SelectItem>
-                          <SelectItem value="LOW">Baixa</SelectItem>
+                          <SelectItem className="cursor-pointer" value="MEDIUM">
+                            Média
+                          </SelectItem>
+                          <SelectItem className="cursor-pointer" value="HIGH">
+                            Alta
+                          </SelectItem>
+                          <SelectItem className="cursor-pointer" value="LOW">
+                            Baixa
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </FormItem>
@@ -145,7 +161,7 @@ export default function UpdateTask({ data: task }: { data: TTask }) {
                 />
               </div>
 
-              <DialogFooter className="mt-6 gap-2 pt-2">
+              <DialogFooter className="mt-6 gap-2 pt-2 ">
                 <Button
                   type="button"
                   variant="outline"
@@ -154,7 +170,7 @@ export default function UpdateTask({ data: task }: { data: TTask }) {
                 >
                   Cancelar
                 </Button>
-                <Button className="cursor-pointer bg-yellow-500 hover:bg-yellow-600" type="submit">
+                <Button className="cursor-pointer bg-yellow-500 hover:bg-yellow-600 text-white" type="submit">
                   Salvar Alterações
                 </Button>
               </DialogFooter>

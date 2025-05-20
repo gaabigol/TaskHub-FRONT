@@ -14,14 +14,14 @@ export default function Shopping() {
   const [searchTerm, setSearchTerm] = useState<string>('')
 
   return (
-    <div className="flex-1 flex flex-col">
+    <div className="flex-1 flex flex-col dark:bg-sidebar">
       <PageHeader
         title="Lista de Compras"
         onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
         onSearch={setSearchTerm}
         searchValue={searchTerm}
       />
-      <main className="flex-1 overflow-auto p-4 md:p-6 bg-slate-50 dark:bg-slate-900">
+      <main className="flex-1 overflow-auto p-4 md:p-6 bg-slate-50 dark:bg-sidebar">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
           <div className="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-3">
             <CShopping.selectCategories value={categoryFilter} onValueChange={setCategoryFilter} />
@@ -30,7 +30,7 @@ export default function Shopping() {
         </div>
         <CShopping.new />
         <Card>
-          <CardHeader className="pb-3 flex flex-row items-center justify-between bg-slate-50 dark:bg-slate-800">
+          <CardHeader className="pb-3 flex flex-row items-center justify-between ">
             <div>
               <CardTitle>Lista de Compras</CardTitle>
               <CardDescription className="text-sm text-foreground-light">
@@ -40,7 +40,7 @@ export default function Shopping() {
             <Button
               variant="ghost"
               size="sm"
-              className="text-foreground-light hover:text-foreground"
+              className="text-foreground-light hover:text-foreground cursor-pointer"
             >
               <Share2 className="mr-1 h-4 w-4" />
               Compartilhar

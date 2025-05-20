@@ -10,7 +10,12 @@ export default function CheckboxPurchased({
 }) {
   return (
     <div className="flex items-center space-x-2">
-      <Checkbox id="showPurchased" checked={checked} onCheckedChange={onCheckedChange} />
+      <Checkbox
+        id="showPurchased"
+        checked={checked}
+        onCheckedChange={onCheckedChange}
+        className="cursor-pointer"
+      />
       <Label htmlFor="showPurchased">Mostrar comprados</Label>
     </div>
   )

@@ -8,9 +8,9 @@ export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false)
 
   return (
-    <div className="flex-1 flex flex-col bg-sidebar dark:bg-sidebar">
+    <div className="flex-1 flex flex-col bg-sidebar dark:bg-sidebar-dark">
       <PageHeader title="Dashboard" onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
-      <main className="flex-1 overflow-auto p-4 md:p-6 bg-slate-50 dark:bg-slate-900">
+      <main className="flex-1 overflow-auto p-4 md:p-6 ">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           <CDashboard.dashboardCards />
         </div>

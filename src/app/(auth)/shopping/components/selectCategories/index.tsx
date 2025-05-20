@@ -16,13 +16,15 @@ export default function SelectCategories({
 }) {
   return (
     <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className="w-full md:w-[200px]">
+      <SelectTrigger className="w-full md:w-[200px] cursor-pointer">
         <SelectValue placeholder="Todas as categorias" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="ALL">Todas as categorias</SelectItem>
+        <SelectItem value="ALL" className="cursor-pointer">
+          Todas as categorias
+        </SelectItem>
         {CATEGORIES_LABELS.map((category) => (
-          <SelectItem key={category.value} value={category.value}>
+          <SelectItem key={category.value} value={category.value} className="cursor-pointer">
             {category.label}
           </SelectItem>
         ))}

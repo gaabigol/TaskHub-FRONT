@@ -11,35 +11,35 @@ export default function QuickActionsPanel() {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 gap-3">
-          <Link href="/task">
+          <Link href="/task" className="cursor-pointer">
             <Button
               variant="outline"
               size="lg"
-              className="h-auto py-4 w-full flex flex-col items-center justify-center"
+              className="h-auto py-4 w-full flex flex-col items-center justify-center cursor-pointer"
             >
               <Plus className="h-5 w-5 text-primary mb-2" />
               <span>Nova Tarefa</span>
             </Button>
           </Link>
 
-          <Link href="/shopping">
+          <Link href="/shopping" className="cursor-pointer">
             <Button
               variant="outline"
               size="lg"
-              className="h-auto py-4 w-full flex flex-col items-center justify-center"
+              className="h-auto py-4 w-full flex flex-col items-center justify-center cursor-pointer"
             >
-              <ShoppingCart className="h-5 w-5 text-secondary mb-2" />
+              <ShoppingCart className="h-5 w-5 text-primary mb-2" />
               <span>Nova Compra</span>
             </Button>
           </Link>
 
-          <Link href="/note">
+          <Link href="/note" className="cursor-pointer">
             <Button
               variant="outline"
               size="lg"
-              className="h-auto py-4 w-full flex flex-col items-center justify-center"
+              className="h-auto py-4 w-full flex flex-col items-center justify-center cursor-pointer"
             >
-              <StickyNote className="h-5 w-5 text-accent mb-2" />
+              <StickyNote className="h-5 w-5 text-primary mb-2" />
               <span>Nova Nota</span>
             </Button>
           </Link>
@@ -47,9 +47,9 @@ export default function QuickActionsPanel() {
           <Button
             variant="outline"
             size="lg"
-            className="h-auto py-4 w-full flex flex-col items-center justify-center"
+            className="h-auto py-4 w-full flex flex-col items-center justify-center cursor-pointer"
           >
-            <Settings className="h-5 w-5 text-foreground-light mb-2" />
+            <Settings className="h-5 w-5 text-primary mb-2" />
             <span>Configurações</span>
           </Button>
         </div>

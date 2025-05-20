@@ -30,11 +30,10 @@ export const authOptions: NextAuthOptions = {
       }
     })
   ],
-  secret: process.env.AUTH_SECRET,
+  secret: process.env.AUH_SECRET,
   pages: {
     signIn: '/',
-    error: '/',
-    signOut: '/'
+    error: '/'
   },
   callbacks: {
     async jwt({ token, user }) {

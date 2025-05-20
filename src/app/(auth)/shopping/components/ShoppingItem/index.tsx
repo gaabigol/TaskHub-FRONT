@@ -45,7 +45,7 @@ export default function ShoppingItem({ data: item }: { data: TShoppingItem }) {
         <Checkbox
           checked={item.purchased}
           onCheckedChange={(checked) => onTogglePurchased(item.id, !!checked)}
-          className="w-4 h-4 text-secondary"
+          className="w-4 h-4 text-secondary cursor-pointer"
         />
       </div>
 
@@ -72,7 +72,7 @@ export default function ShoppingItem({ data: item }: { data: TShoppingItem }) {
       <div className="flex opacity-0 group-hover:opacity-100 transition-opacity">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+            <Button variant="ghost" size="sm" className="h-8 w-8 p-0 cursor-pointer">
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>

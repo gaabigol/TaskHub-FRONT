@@ -42,7 +42,7 @@ export default function SignIn() {
         description: dateNow()
       })
       form.reset()
-      router.push('/dashboard')
+      router.replace('/dashboard')
     },
     onError: () => {
       toast('Erro ao fazer login, por favor tente novamente', {
@@ -86,7 +86,7 @@ export default function SignIn() {
           )}
         />
 
-        <Button type="submit" className="w-full" disabled={isPending}>
+        <Button type="submit" className="w-full dark:text-zinc-800 cursor-pointer" disabled={isPending}>
           {isPending ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />

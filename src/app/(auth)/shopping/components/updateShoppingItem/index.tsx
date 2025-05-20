@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { ShoppingUpdateFormValues, shoppingItemUptemFormSchema, units } from './common'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { TCreateShoppingItemRequest, TShoppingItem } from '@/service/shoppingItem/type'
+import { TShoppingItem, TUpdateShoppingItemRequest } from '@/service/shoppingItem/type'
 import shoppingItemService from '@/service/shoppingItem'
 import { toast } from 'sonner'
 import { dateNow } from '@/common/util'
@@ -26,27 +26,27 @@ import {
   DialogTitle
 } from '@/components/ui/dialog'
 
-export default function UpdateShoppingItem({ data }: { data: TShoppingItem }) {
+export default function UpdateShoppingItem({ data: item }: { data: TShoppingItem }) {
   const [showDialog, setShowDialog] = useState<boolean>(false)
   const queryClient = useQueryClient()
 
   const form = useForm<ShoppingUpdateFormValues>({
     resolver: zodResolver(shoppingItemUptemFormSchema),
     defaultValues: {
-      quantity: data.quantity,
-      category: data.category,
-      name: data.name,
-      unit: data.unit
+      quantity: item.quantity,
+      category: item.category,
+      name: item.name,
+      unit: item.unit
     }
   })
 
   const { mutateAsync: handleCreateItemFn, isPending } = useMutation({
-    mutationFn: (data: TCreateShoppingItemRequest) => shoppingItemService.create(data),
+    mutationFn: (data: TUpdateShoppingItemRequest) => shoppingItemService.update(data),
     onSuccess: () => {
       toast('Item de compra criado com sucesso', {
         description: dateNow()
       })
-      queryClient.invalidateQueries({ queryKey: ['shoppingItems'] })
+      queryClient.invalidateQueries({ queryKey: ['shopping-item'] })
       form.reset()
     },
     onError: () => {
@@ -57,7 +57,13 @@ export default function UpdateShoppingItem({ data }: { data: TShoppingItem }) {
   })
 
   const onSubmit = async (data: ShoppingUpdateFormValues) => {
-    await handleCreateItemFn(data)
+    await handleCreateItemFn({
+      id: item.id,
+      name: data.name,
+      quantity: data.quantity,
+      unit: data.unit,
+      category: data.category
+    })
   }
 
   return (
@@ -72,7 +78,7 @@ export default function UpdateShoppingItem({ data }: { data: TShoppingItem }) {
         <span className="sr-only">Editar</span>
       </Button>
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
-        <DialogContent className="max-w-md p-0 overflow-hidden bg-black text-white border-0">
+        <DialogContent className="max-w-md p-0 overflow-hidden dark:bg-sidebar text-white border-0">
           <DialogHeader className="p-4 pb-2">
             <DialogTitle className="text-lg font-medium">Editar Item de compra</DialogTitle>
           </DialogHeader>
@@ -125,13 +131,13 @@ export default function UpdateShoppingItem({ data }: { data: TShoppingItem }) {
                       <FormItem>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger className="bg-gray-800 border-gray-700 focus:border-orange-500 focus:ring-orange-500">
+                            <SelectTrigger className="cursor-pointer">
                               <SelectValue placeholder="un" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent className="bg-gray-800 border-gray-700">
+                          <SelectContent>
                             {units.map((unit) => (
-                              <SelectItem key={unit} value={unit}>
+                              <SelectItem key={unit} value={unit} className="cursor-pointer">
                                 {unit}
                               </SelectItem>
                             ))}
@@ -150,21 +156,41 @@ export default function UpdateShoppingItem({ data }: { data: TShoppingItem }) {
                       <FormItem>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger className="bg-gray-800 border-gray-700 focus:border-orange-500 focus:ring-orange-500">
+                            <SelectTrigger className="h-10 w-[150px] cursor-pointer">
                               <SelectValue placeholder="Categoria" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent className="bg-gray-800 border-gray-700">
-                            <SelectItem value="Geral">Geral</SelectItem>
-                            <SelectItem value="Mercearia">Mercearia</SelectItem>
-                            <SelectItem value="Frutas">Frutas</SelectItem>
-                            <SelectItem value="Legumes">Legumes</SelectItem>
-                            <SelectItem value="Laticínios">Laticínios</SelectItem>
-                            <SelectItem value="Padaria">Padaria</SelectItem>
-                            <SelectItem value="Carnes">Carnes</SelectItem>
-                            <SelectItem value="Bebidas">Bebidas</SelectItem>
-                            <SelectItem value="Limpeza">Limpeza</SelectItem>
-                            <SelectItem value="Casa">Casa</SelectItem>
+                          <SelectContent>
+                            <SelectItem className="cursor-pointer" value="GENERAL">
+                              Geral
+                            </SelectItem>
+                            <SelectItem className="cursor-pointer" value="GROCERY">
+                              Mercearia
+                            </SelectItem>
+                            <SelectItem className="cursor-pointer" value="FRUITS">
+                              Frutas
+                            </SelectItem>
+                            <SelectItem className="cursor-pointer" value="VEGETABLES">
+                              Legumes
+                            </SelectItem>
+                            <SelectItem className="cursor-pointer" value="DAIRY">
+                              Laticínios
+                            </SelectItem>
+                            <SelectItem className="cursor-pointer" value="BAKERY">
+                              Padaria
+                            </SelectItem>
+                            <SelectItem className="cursor-pointer" value="MEAT">
+                              Carnes
+                            </SelectItem>
+                            <SelectItem className="cursor-pointer" value="BEVERAGES">
+                              Bebidas
+                            </SelectItem>
+                            <SelectItem className="cursor-pointer" value="CLEANING">
+                              Limpeza
+                            </SelectItem>
+                            <SelectItem className="cursor-pointer" value="HOUSEHOLD">
+                              Casa
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                       </FormItem>
@@ -177,16 +203,12 @@ export default function UpdateShoppingItem({ data }: { data: TShoppingItem }) {
                 <Button
                   type="button"
                   variant="outline"
-                  className="bg-gray-800 border-gray-700 hover:bg-gray-700 text-white"
+                  className="bg-gray-800 border-gray-700 hover:bg-gray-700 text-white cursor-pointer"
                   onClick={() => setShowDialog(false)}
                 >
                   Cancelar
                 </Button>
-                <Button
-                  type="submit"
-                  className="bg-orange-500 hover:bg-orange-600 text-white"
-                  disabled={isPending}
-                >
+                <Button type="submit" className=" text-white cursor-pointer" disabled={isPending}>
                   <Plus className="mr-1 h-4 w-4" />
                   Salvar Alterações
                 </Button>
