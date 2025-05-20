@@ -41,7 +41,6 @@ export default function UpcomingTasksPanel() {
           title={task.title}
           completed={task.completed}
           date={task.createdAt}
-          priority={task.priority}
         />
       ))}
     </ul>

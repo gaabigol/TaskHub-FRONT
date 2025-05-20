@@ -10,14 +10,12 @@ export default function UpcomingTaskItem({
   id,
   title,
   completed,
-  date,
-  priority
+  date
 }: {
   id: number
   title: string
   completed: boolean
   date: string
-  priority: string
 }) {
   const [isChecked, setIsChecked] = useState(completed)
   const queryClient = useQueryClient()
