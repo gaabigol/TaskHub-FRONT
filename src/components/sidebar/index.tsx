@@ -75,7 +75,7 @@ export default function Sidebar({
     <Fragment>
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/30 z-10 md:hidden"
+          className="fixed inset-0 z-10 md:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -172,7 +172,7 @@ export default function Sidebar({
             <ThemeToggle />
 
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+              <DropdownMenuTrigger >
                 <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full cursor-pointer">
                   <User className="h-4 w-4" />
                   <span className="sr-only">Menu</span>
