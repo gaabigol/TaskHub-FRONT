@@ -80,7 +80,7 @@ export default function NewNoteDialog() {
       </Button>
 
       <Dialog open={showNewNoteDialog} onOpenChange={setShowNewNoteDialog}>
-        <DialogContent className="sm:max-w-[550px] dark:bg-sidebar">
+        <DialogContent className="sm:max-w-[550px] ">
           <DialogHeader>
             <DialogTitle>Nova Nota</DialogTitle>
           </DialogHeader>

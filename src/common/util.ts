@@ -24,7 +24,7 @@ export function formatRelativeTime(date: Date | string): string {
   })
 }
 
-export function dateNow():string {
+export function dateNow(): string {
   return format(new Date(), "EEEE, d 'de' MMMM 'de' yyyy 'às' HH:mm", {
     locale: ptBR
   })
@@ -97,4 +97,14 @@ export function getActivityColor(type: string): string {
 export function truncateText(text: string, maxLength: number): string {
   if (text.length <= maxLength) return text
   return `${text.substring(0, maxLength)}...`
+}
+
+export function buildQuery(params: Record<string, any>): string {
+  const searchParams = new URLSearchParams()
+  for (const key in params) {
+    if (params[key] !== undefined && params[key] !== null) {
+      searchParams.append(key, String(params[key]))
+    }
+  }
+  return `?${searchParams.toString()}`
 }

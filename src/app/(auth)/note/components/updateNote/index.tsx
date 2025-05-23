@@ -84,7 +84,7 @@ export default function UpdateNote({ data: note }: { data: TNote }) {
       </Button>
 
       <Dialog open={showNewNoteDialog} onOpenChange={setShowNewNoteDialog}>
-        <DialogContent className="sm:max-w-[550px] dark:bg-sidebar">
+        <DialogContent className="sm:max-w-[550px]">
           <DialogHeader>
             <DialogTitle>Editar Nota</DialogTitle>
           </DialogHeader>

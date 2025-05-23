@@ -71,7 +71,7 @@ export default function ShoppingItem({ data: item }: { data: TShoppingItem }) {
       </div>
       <div className="flex opacity-0 group-hover:opacity-100 transition-opacity">
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger>
             <Button variant="ghost" size="sm" className="h-8 w-8 p-0 cursor-pointer">
               <MoreHorizontal className="h-4 w-4" />
             </Button>

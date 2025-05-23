@@ -77,7 +77,7 @@ export default function UpdateTask({ data: task }: { data: TTask }) {
         <span className="sr-only">Editar</span>
       </Button>
       <Dialog open={showDialog} onOpenChange={setShowDialog} >
-        <DialogContent className="sm:max-w-[550px] p-6 dark:bg-sidebar">
+        <DialogContent className="sm:max-w-[550px] p-6 ">
           <DialogHeader className="mb-4">
             <DialogTitle className="text-xl font-semibold">Editar Tarefa</DialogTitle>
           </DialogHeader>

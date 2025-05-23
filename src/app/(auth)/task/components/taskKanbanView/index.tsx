@@ -2,17 +2,22 @@ import { TGetTaskResponse, TUpdateTaskRequest } from '@/service/task/type'
 import { CTask } from '..'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import TaskService from '@/service/task'
 import { toast } from 'sonner'
-import { dateNow, getPriorityColor, getPriorityLabel } from '@/common/util'
+import { buildQuery, dateNow, getPriorityColor, getPriorityLabel } from '@/common/util'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 
 export function TaskKanbanView({ data: tasks }: { data: TGetTaskResponse | undefined }) {
   const pendingTasks = tasks?.data.filter((task) => !task.completed)
-  const completedTasks = tasks?.data.filter((task) => task.completed)
+  const { data: completedTasks } = useQuery({
+    queryKey: ['completed-tasks'],
+    queryFn: async () => TaskService.get(buildQuery({ completed: true }))
+  })
+
   const queryClient = useQueryClient()
+
   const { mutateAsync: updateTaskFn } = useMutation({
     mutationFn: async (task: TUpdateTaskRequest) => TaskService.update(task),
     onSuccess: () => {
@@ -60,7 +65,7 @@ export function TaskKanbanView({ data: tasks }: { data: TGetTaskResponse | undef
                     <div className="flex justify-between items-start">
                       <CardTitle className="text-base truncate">{task.title}</CardTitle>
                       <Checkbox
-                         className="cursor-pointer"
+                        className="cursor-pointer"
                         checked={task.completed}
                         onCheckedChange={(checked) => onToggleComplete(task.id, checked as boolean)}
                       />
@@ -93,16 +98,16 @@ export function TaskKanbanView({ data: tasks }: { data: TGetTaskResponse | undef
         <div className="border rounded-lg p-4 bg-muted/30">
           <h3 className="font-medium text-lg mb-3 flex items-center">
             <span className="h-3 w-3 rounded-full bg-green-500 mr-2"></span>
-            Concluídas ({completedTasks?.length})
+            Concluídas ({completedTasks?.total})
           </h3>
 
           <div className="space-y-3">
-            {completedTasks?.length === 0 ? (
+            {completedTasks?.total === 0 ? (
               <div className="p-4 border border-dashed rounded-lg text-center text-muted-foreground">
                 Nenhuma tarefa concluída
               </div>
             ) : (
-              completedTasks?.map((task) => (
+              completedTasks?.data?.map((task) => (
                 <Card key={task.id} className="opacity-80 hover:opacity-100 transition-opacity">
                   <CardHeader className="p-3 pb-0">
                     <div className="flex justify-between items-start">

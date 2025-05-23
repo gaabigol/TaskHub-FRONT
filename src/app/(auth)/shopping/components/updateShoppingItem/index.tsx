@@ -78,7 +78,7 @@ export default function UpdateShoppingItem({ data: item }: { data: TShoppingItem
         <span className="sr-only">Editar</span>
       </Button>
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
-        <DialogContent className="max-w-md p-0 overflow-hidden dark:bg-sidebar text-white border-0">
+        <DialogContent className="max-w-md p-0 overflow-hidden text-white border-0">
           <DialogHeader className="p-4 pb-2">
             <DialogTitle className="text-lg font-medium">Editar Item de compra</DialogTitle>
           </DialogHeader>

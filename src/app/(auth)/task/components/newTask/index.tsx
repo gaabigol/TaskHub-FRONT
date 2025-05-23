@@ -25,7 +25,9 @@ export default function NewTask() {
   const form = useForm<TaskFormValues>({
     resolver: zodResolver(taskFormSchema),
     defaultValues: {
-      title: ''
+      title: '',
+      category: 'GENERAL',
+      priority: 'MEDIUM'
     }
   })
 

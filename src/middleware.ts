@@ -10,10 +10,8 @@ export default withAuth(
       return NextResponse.redirect(new URL('/', req.url))
     }
 
-    if (isAuthorized) {
-      if (path === '/') {
-        return NextResponse.redirect(new URL('/dashboard', req.url))
-      }
+    if (isAuthorized && (path === '/' || path === '/login')) {
+      return NextResponse.redirect(new URL('/dashboard', req.url))
     }
 
     return NextResponse.next()
@@ -39,6 +37,7 @@ export const config = {
      * - favicon.ico (favicon file)
      * - public folder
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|public).*)'
+
+    '/((?!api|_next/static|_next/image|favicon.ico|public|login).*)'
   ]
 }
