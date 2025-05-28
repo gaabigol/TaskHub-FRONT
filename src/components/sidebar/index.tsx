@@ -119,7 +119,7 @@ export default function Sidebar({
                 <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
               </svg>
             </span>
-            <h1 className="text-xl font-semibold text-foreground">DiárioUtil</h1>
+            <h1 className="text-xl font-semibold text-foreground">TASK-HUB</h1>
           </div>
           <Button
             onClick={() => setIsOpen(false)}

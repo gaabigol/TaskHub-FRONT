@@ -3,7 +3,7 @@ export default function FeatureShowcase() {
     <div className="hidden md:flex flex-1 bg-primary">
       <div className="flex flex-col justify-center p-12 max-w-xl mx-auto">
         <h1 className="text-4xl font-bold tracking-tight mb-6 text-zinc-900">
-          Bem-vindo ao DiárioUtil
+          Bem-vindo ao TASK-HUB
         </h1>
         <p className="text-xl mb-8 text-zinc-800">
           Seu assistente pessoal para gerenciar tarefas diárias, listas de compras e anotações
