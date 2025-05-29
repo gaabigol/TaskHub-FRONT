@@ -3,7 +3,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import TaskService from '@/service/task'
 import { toast } from 'sonner'
 import { CTask } from '..'
-import { dateNow, formatDate, getPriorityColor, getPriorityLabel } from '@/common/util'
+import {
+  dateNow,
+  formatDate,
+  getCategoryLabel,
+  getPriorityColor,
+  getPriorityLabel
+} from '@/common/util'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Badge } from '@/components/ui/badge'
 
@@ -66,7 +72,9 @@ export default function TaskListView({ data: tasks }: { data: TGetTaskResponse |
                 </div>
                 <div className="col-span-4 font-medium truncate">{task.title}</div>
                 <div className="col-span-2">
-                  {task.category && <Badge variant="outline">{task.category}</Badge>}
+                  {task.category && (
+                    <Badge variant="outline">{getCategoryLabel(task.category)}</Badge>
+                  )}
                 </div>
                 <div className="col-span-2">
                   <span className={getPriorityColor(task.priority)}>

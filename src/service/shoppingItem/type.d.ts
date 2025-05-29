@@ -8,7 +8,7 @@ export type TShoppingCategory =
   | 'DAIRY'
   | 'BAKERY'
   | 'MEAT'
-  | 'BEVERAGES '
+  | 'BEVERAGES'
   | 'CLEANING'
   | 'HOUSEHOLD'
 

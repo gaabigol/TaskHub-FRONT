@@ -15,7 +15,7 @@ export const shoppingItemFormSchema = z.object({
       'DAIRY',
       'BAKERY',
       'MEAT',
-      'BEVERAGES ',
+      'BEVERAGES',
       'CLEANING',
       'HOUSEHOLD'
     ],

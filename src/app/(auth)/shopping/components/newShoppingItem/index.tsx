@@ -88,7 +88,9 @@ export default function NewShoppingItem() {
                           {...field}
                           onChange={(e) => field.onChange(parseInt(e.target.value))}
                         />
+                        
                       </FormControl>
+                       <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -112,6 +114,7 @@ export default function NewShoppingItem() {
                           ))}
                         </SelectContent>
                       </Select>
+                       <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -161,6 +164,7 @@ export default function NewShoppingItem() {
                         </SelectItem>
                       </SelectContent>
                     </Select>
+                     <FormMessage />
                   </FormItem>
                 )}
               />

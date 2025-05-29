@@ -5,7 +5,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import TaskService from '@/service/task'
 import { toast } from 'sonner'
-import { buildQuery, dateNow, getPriorityColor, getPriorityLabel } from '@/common/util'
+import { buildQuery, dateNow, getCategoryLabel, getPriorityColor, getPriorityLabel } from '@/common/util'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 
@@ -75,7 +75,7 @@ export function TaskKanbanView({ data: tasks }: { data: TGetTaskResponse | undef
                     <div className="flex gap-2 mb-1 flex-wrap">
                       {task.category && (
                         <Badge variant="outline" className="text-xs">
-                          {task.category}
+                          {getCategoryLabel(task.category)}
                         </Badge>
                       )}
                       <Badge
@@ -122,7 +122,7 @@ export function TaskKanbanView({ data: tasks }: { data: TGetTaskResponse | undef
                     <div className="flex gap-2 mb-1 flex-wrap">
                       {task.category && (
                         <Badge variant="outline" className="text-xs">
-                          {task.category}
+                          {getCategoryLabel(task.category)}
                         </Badge>
                       )}
                       <Badge

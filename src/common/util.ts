@@ -43,19 +43,6 @@ export function getPriorityColor(priority: string): string {
   }
 }
 
-export function getPriorityLabel(priority: string): string {
-  switch (priority) {
-    case 'HIGH':
-      return 'Alta'
-    case 'MEDIUM':
-      return 'Média'
-    case 'LOW':
-      return 'Baixa'
-    default:
-      return 'Normal'
-  }
-}
-
 export function getActivityIcon(type: string): string {
   switch (type) {
     case 'create':
@@ -107,4 +94,53 @@ export function buildQuery(params: Record<string, any>): string {
     }
   }
   return `?${searchParams.toString()}`
+}
+
+export const SHOPPING_CATEGORIES = {
+  GENERAL: 'Geral',
+  GROCERY: 'Mercearia',
+  FRUITS: 'Frutas',
+  VEGETABLES: 'Verduras',
+  DAIRY: 'Laticínios',
+  BAKERY: 'Padaria',
+  MEAT: 'Carnes',
+  BEVERAGES: 'Bebidas',
+  CLEANING: 'Limpeza',
+  HOUSEHOLD: 'Utilidades'
+} as const
+
+export type CategoryKey = keyof typeof SHOPPING_CATEGORIES
+
+export function getShoppingCategoryLabel(category: string): string {
+  const upperCategory = category.toUpperCase() as CategoryKey
+  return SHOPPING_CATEGORIES[upperCategory] || SHOPPING_CATEGORIES.GENERAL
+}
+
+export const PRIORITIES = {
+  MEDIUM: 'Média',
+  HIGH: 'Alta',
+  LOW: 'Baixa',
+  ALL: 'Todas'
+} as const
+
+export type TPriority = keyof typeof PRIORITIES
+
+export function getPriorityLabel(priority: TPriority): string {
+  const upperPriority = priority.toUpperCase() as TPriority
+  return PRIORITIES[upperPriority] || PRIORITIES.MEDIUM
+}
+
+export const CATEGORIES = {
+  GENERAL: 'Geral',
+  DEVELOPMENT: 'Desenvolvimento',
+  DESIGN: 'Design',
+  WORK: 'Trabalho',
+  SEARCH: 'Pesquisa'
+} as const
+
+export type TCategory = keyof typeof CATEGORIES
+
+export function getCategoryLabel(category: TCategory): string {
+  const upperCategory = category.toUpperCase() as TCategory
+  return CATEGORIES[upperCategory] || CATEGORIES.GENERAL
 }

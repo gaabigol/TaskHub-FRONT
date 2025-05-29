@@ -4,7 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Checkbox } from '@/components/ui/checkbox'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
-import { dateNow, formatDate, getPriorityColor, getPriorityLabel } from '@/common/util'
+import { dateNow, formatDate, getCategoryLabel, getPriorityColor, getPriorityLabel } from '@/common/util'
 import TaskService from '@/service/task'
 import { Badge } from '@/components/ui/badge'
 
@@ -58,7 +58,7 @@ export default function TaskGridView({ data }: { data: TGetTaskResponse | undefi
               </CardHeader>
               <CardContent className="pb-2">
                 <div className="flex gap-2 mb-2 flex-wrap">
-                  {task.category && <Badge variant="outline">{task.category}</Badge>}
+                  {task.category && <Badge variant="outline">{getCategoryLabel(task.category)}</Badge>}
                   <Badge variant="secondary" className={getPriorityColor(task.priority)}>
                     {getPriorityLabel(task.priority)}
                   </Badge>

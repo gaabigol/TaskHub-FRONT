@@ -1,4 +1,4 @@
-import { dateNow } from '@/common/util'
+import { dateNow, getShoppingCategoryLabel } from '@/common/util'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import {
@@ -65,7 +65,7 @@ export default function ShoppingItem({ data: item }: { data: TShoppingItem }) {
 
         <div className="flex items-center text-xs text-foreground-light mt-1">
           <span className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-foreground-light">
-            {item.category}
+            {getShoppingCategoryLabel(item.category)}
           </span>
         </div>
       </div>
